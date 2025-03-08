@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content=".">
+    <meta name="keywords" content="Material, controllable material generation, material control">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MaterialMVP</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/twentytwenty.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+  
+
+    <script src="./static/js/jquery-3.2.1.min.js"></script>
+    <script src="./static/js/jquery.event.move.js"></script>
+    <script src="./static/js/jquery.twentytwenty.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/fontawesome.all.min.js"></script>
+</head>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LKCDBW8851"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-LKCDBW8851');
+</script>
+
+
+<body>
+
+    <section class="hero teaser ">
+        <div class="hero-body">
+            <div class="container is-max-desktop has-text-centered">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered ">
+                      <br>  <br>  <br>  <br>
+                        <h2 class="title is-1 publication-title has-text-centered">
+                          MaterialMVP: Illumination-Invariant Material Generation via Multi-view PBR Diffusion
+                        </h2>
+                        <h2 class="title publication-title is-4 has-text-grey"> Anonymous Submission </h2>
+
+                  
+                        <div class="video">
+                          <video muted autoplay="autoplay" loop="loop" width="100%">
+                            <source src="./multimedia/teaser.mp4" type="video/mp4">
+                          </video> 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Gallery</h2>
+          <div class="columns is-multiline is-centered" style="max-width: 80%; margin: 0 auto;">
+              <script>
+                  // Function to generate a random integer between min and max (inclusive)
+                  function getRandomInt(min, max) {
+                      return Math.floor(Math.random() * (max - min + 1)) + min;
+                  }
+    
+                  // Function to generate the gallery
+                  function generateGallery() {
+                      const galleryContainer = document.createElement('div');
+                      galleryContainer.className = 'columns is-multiline is-centered';
+    
+                      // Generate 25 random indices
+                      const indices = [];
+                      while (indices.length < 25) {
+                          const randomIndex = getRandomInt(0, 208);
+                          if (!indices.includes(randomIndex)) {
+                              indices.push(randomIndex);
+                          }
+                      }
+    
+                      // Create and append images
+                      indices.forEach(index => {
+                          const column = document.createElement('div');
+                          column.className = 'column is-one-fifth has-text-centered'; // Add has-text-centered for horizontal centering
+    
+                          const imageWrapper = document.createElement('div'); // Wrapper for vertical centering
+                          imageWrapper.style.display = 'flex';
+                          imageWrapper.style.justifyContent = 'center';
+                          imageWrapper.style.alignItems = 'center';
+                          imageWrapper.style.height = '100%';
+    
+                          const image = document.createElement('img');
+                          image.src = `./goodcase_gif_slow/goodcase0303_${index}.gif`;
+                          image.alt = `Gallery Image ${index}`;
+                          image.style.width = '100%'; // Set the width of the image to 100% to fit the column
+                          image.style.height = 'auto'; // Maintain aspect ratio
+                          image.style.objectFit = 'cover'; // Maintain aspect ratio
+    
+                          imageWrapper.appendChild(image);
+                          column.appendChild(imageWrapper);
+                          galleryContainer.appendChild(column);
+                      });
+    
+                      return galleryContainer;
+                  }
+    
+                  // Append the gallery to the section
+                  document.addEventListener('DOMContentLoaded', () => {
+                      const gallerySection = document.querySelector('.section .container');
+                      gallerySection.appendChild(generateGallery());
+                  });
+              </script>
+          </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+          <!-- <div class="column"> -->
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Physically-based rendering (PBR) has become a cornerstone in modern computer graphics, enabling realistic material representation and lighting interactions in 3D scenes. In this paper, we present MaterialMVP, a novel end-to-end model for generating PBR textures from 3D meshes and image prompts, addressing key challenges in multi-view material synthesis. Our approach leverages Reference Attention to extract and encode informative latent from the input reference images, enabling intuitive and controllable texture generation. We also introduce a Consistency-Regularized Training strategy to enforce stability across varying viewpoints and illumination conditions, ensuring illumination-invariant and geometrically consistent results. Additionally, we propose Dual-Channel Material Generation, which separately optimizes albedo and metallic-roughness (MR) textures while maintaining precise spatial alignment with the input images through Multi-Channel Aligned Attention. Learnable material embeddings are further integrated to capture the distinct properties of albedo and MR. Experimental results demonstrate that our model generates PBR textures with realistic behavior across diverse lighting scenarios, outperforming existing methods in both consistency and quality for scalable 3D asset creation.
+               </p>
+            </div>
+          </div>
+        </div>
+        <!--/ Abstract. -->
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <!-- <div class="column is-four-fifths"> -->
+          <div class="column">
+            <h2 class="title is-3">Method</h2>
+            <div class="content has-text-justified">
+              <p>
+    
+                The proposed method introduces a framework for generating high-quality, view-consistent Physically Based Rendering (PBR) maps from image prompts using a Multiview Diffusion Model. At its core, the approach employs a Dual-Channel Material Generation framework, which extends the traditional diffusion model by incorporating an additional channel to simultaneously produce albedo and metallic-roughness (MR) maps. To ensure the generated textures retain fine details and remain faithful to the input reference image, we utilize Reference Attention, which extracts detailed information through a dedicated reference branch. Additionally, Consistency-Regularized Training is introduced to enhance robustness by training the model on pairs of reference images with slight variations in camera pose and lighting, enforcing the generation of lighting-invariant PBR maps. To address misalignment issues between the albedo and MR channels, a Multi-Channel Aligned Attention module is designed to synchronize information across channels, preventing artifacts and unexpected shadows. Furthermore, Learnable Material Embeddings are incorporated for each channel, providing contextual guidance to ensure artifact-free and coherent texture generation.
+              </p>
+              <div class="column">
+                <img src="./multimedia/pipeline.png" />
+              </div>
+            </div>
+  
+    
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+    <section class="section" style="margin-top: 0; padding-top: 50px;">
+      
+ 
+
+      <div class="hero-body">
+        <div class="container" style="text-align: center; ">
+          
+            <h2 class="title is-3" style="text-align: center;">Comparison with <span
+              style="color: #4FACFA;">text-conditioned</span> methods  </h2>
+            
+
+            <div class="hero-body" style="margin-top: 0px; margin-bottom: -30px;">
+              <img id="overview" width="80%" src="./multimedia/text_prompt_compare.png" />
+            </div>
+
+          </div>
+       
+    </div>
+
+
+
+      <div class="hero-body">
+        <div class="container" style="text-align: center; ">
+          
+            <h2 class="title is-3" style="text-align: center;">Comparison with <span
+              style="color: #4FACFA;">image-conditioned</span> methods  </h2>
+            
+
+            <div class="hero-body" style="margin-top: 0px; margin-bottom: -30px;">
+              <img id="overview" width="80%" src="./multimedia/image_prompt_compare.png" />
+            </div>
+
+          </div>
+       
+    </div>
+
+  
+
+    <div class="hero-body">
+      <div class="container" style="text-align: center; ">
+        
+          <h2 class="title is-3" style="text-align: center;">Realistic material creation with <span
+            style="color: #4FACFA;">a variety of different prompts</span></h2>
+          
+
+          <div class="hero-body" style="margin-top: 0px; margin-bottom: -30px;">
+            <img id="overview" width="80%" src="./multimedia/re-texture.png" />
+          </div>
+
+        </div>
+     
+  </div>
+
+
+  <div class="hero-body">
+    <div class="container" style="text-align: center; ">
+      
+        <h2 class="title is-3" style="text-align: center;">Texture generation <span
+          style="color: #4FACFA;">under distinct environmental
+          illuminations</span></h2>
+
+        <div class="hero-body" style="margin-top: 0px; margin-bottom: -30px;">
+          <img id="overview" width="80%" src="./multimedia/re-lighting.png" />
+        </div>
+
+      </div>
+
+    <div class="hero-body">
+    <div class="container" style="text-align: center; ">
+      
+        <h2 class="title is-3" style="text-align: center;">Ablation results</h2>
+
+        <div class="hero-body" style="margin-top: 0px; margin-bottom: -30px;">
+          <img id="overview" width="80%" src="./multimedia/ablation.png" />
+        </div>
+
+      </div>
+   
+</div>
+    
+
+
+
+
+
+
+
+
+      
+
+      
+
+  </section>
+
+
+
+
+    <footer class="footer">
+        <div class="hero-body">
+            <div class="columns is-two-fifths is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            Website template credit to <a
+                                href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, and is licensed under a
+                            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
