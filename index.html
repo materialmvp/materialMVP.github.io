@@ -84,15 +84,17 @@
                   function generateGallery() {
                       const galleryContainer = document.createElement('div');
                       galleryContainer.className = 'columns is-multiline is-centered';
-    
+
+                      const excludeIndices = [60, 93, 161, 89, 142, 132, 122, 114, 108, 176, 49, 107, 52, 40, 142, 38, 8, 36, 46, 48, 133];
                       // Generate 25 random indices
                       const indices = [];
                       while (indices.length < 25) {
-                          const randomIndex = getRandomInt(0, 208);
-                          if (!indices.includes(randomIndex)) {
-                              indices.push(randomIndex);
-                          }
-                      }
+                            const randomIndex = getRandomInt(0, 208);
+                            // Check if the random index is not in the exclude list and not already in indices
+                            if (!excludeIndices.includes(randomIndex) && !indices.includes(randomIndex)) {
+                                indices.push(randomIndex);
+                            }
+                        }
     
                       // Create and append images
                       indices.forEach(index => {
